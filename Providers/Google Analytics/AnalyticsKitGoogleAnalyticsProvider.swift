@@ -10,12 +10,12 @@ public class AnalyticsKitGoogleAnalyticsProvider: NSObject, AnalyticsKitProvider
     fileprivate let tracker: GAITracker
 
     public init() {        
-        NSError *configureError;
-        [[GGLContext sharedInstance] configureWithError:&configureError];
-        NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+        NSError *configureError
+        [[GGLContext sharedInstance] configureWithError:&configureError]
+        NSAssert(!configureError, @"Error configuring Google services: %@", configureError)
 
-        GAI *gai = [GAI sharedInstance];
-        gai.trackUncaughtExceptions = YES; 
+        GAI *gai = [GAI sharedInstance]
+        gai.trackUncaughtExceptions = YES;
         
         super.init()
     }
