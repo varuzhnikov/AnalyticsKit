@@ -9,6 +9,17 @@ public class AnalyticsKitGoogleAnalyticsProvider: NSObject, AnalyticsKitProvider
     fileprivate let value = "Value"
     fileprivate let tracker: GAITracker
 
+    public init() {        
+        NSError *configureError;
+        [[GGLContext sharedInstance] configureWithError:&configureError];
+        NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+
+        GAI *gai = [GAI sharedInstance];
+        gai.trackUncaughtExceptions = YES; 
+        
+        super.init()
+    }
+    
     public init(withTrackingID trackingId: String) {
         tracker = GAI.sharedInstance().tracker(withTrackingId: trackingId)
     }
